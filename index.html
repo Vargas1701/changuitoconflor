@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola 💛</title>
+
+    <!-- Incluir Bootstrap desde CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #d4a4bf; /* Color suave de fondo */
+            font-family: 'Arial', sans-serif;
+            height: 100vh; /* Aseguramos que ocupe todo el alto de la pantalla */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrar verticalmente */
+            align-items: center; /* Centrar horizontalmente */
+        }
+
+        h1 {
+            color: #000000; /* Morado suave */
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+
+        .mensaje {
+            font-size: 1.3rem;
+            color: #000000; /* Morado más oscuro */
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .flores {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            display: none;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flor {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            border: 4px solid #9c27b0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        audio {
+            display: none; /* Ocultar el reproductor de audio visualmente */
+        }
+
+        .btn {
+            background-color: #ff4081; /* Rosa brillante */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #f50057;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container text-center">
+        <!-- Solo el botón aparece al principio, centrado en el medio de la pantalla -->
+        <button class="btn" onclick="mostrarFlores()">🌻 Presióname 🌻</button>
+
+        <!-- Elementos ocultos hasta presionar el botón -->
+        <h1 class="text-center" style="display: none;">❤️ TE AMO ❤️</h1>
+        <p class="mensaje text-center" style="display: none;"></p>
+
+        <div class="flores" id="flores-container">
+            <!-- Aquí solo se mostrará una imagen -->
+        </div>
+
+        <audio id="cancion">
+            <source src="banda.mp3" type="audio/mp3">
+            Tu navegador no soporta el audio.
+        </audio>
+    </div>
+
+    <script>
+        function mostrarFlores() {
+            // Mostrar los elementos ocultos después de presionar el botón
+            document.getElementById("flores-container").style.display = "flex";
+            document.querySelector("h1").style.display = "block"; // Mostrar el título
+            document.querySelector(".mensaje").style.display = "block"; // Mostrar el mensaje
+
+            // Iniciar la música en segundo plano sin mostrar el reproductor
+            const audio = document.getElementById("cancion");
+            audio.play();
+
+            // Crear y mostrar una sola imagen de las flores
+            const contenedor = document.getElementById("flores-container");
+            contenedor.innerHTML = ""; // Limpiar cualquier contenido previo
+
+            const img = document.createElement("img");
+            img.src = "imagenes/changito.jpg"; // Ruta relativa a la carpeta de imágenes            
+            img.className = "flor";
+            img.alt = "Tulipán amarillo";
+            contenedor.appendChild(img);
+
+            // Ocultar el botón después de hacer clic
+            document.querySelector(".btn").style.display = "none";
+        }
+    </script>
+
+    <!-- Incluir los scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
